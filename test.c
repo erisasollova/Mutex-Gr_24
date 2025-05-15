@@ -4,6 +4,8 @@
 
 int counter = 0;
 pthread_mutex_t lock;
+int main() {
+    pthread_mutex_init(&lock, NULL);
 
 void* increment_counter(void* arg) {
     for(int i = 0; i < 100000; i++) {
@@ -13,10 +15,6 @@ void* increment_counter(void* arg) {
     }
     return NULL;
 }
-
-int main() {
-    pthread_t t1, t2;
-    pthread_mutex_init(&lock, NULL);
 
     pthread_create(&t1, NULL, increment_counter, NULL);
     pthread_create(&t2, NULL, increment_counter, NULL);
