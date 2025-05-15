@@ -18,6 +18,18 @@ int main() {
     pthread_t t1, t2;
     pthread_mutex_init(&lock, NULL);
 
+<<<<<<< HEAD
+=======
+void* increment_counter(void* arg) {
+    for(int i = 0; i < 100000; i++) {
+        pthread_mutex_lock(&lock);
+        counter++;
+        pthread_mutex_unlock(&lock);
+    }
+    return NULL;
+}
+
+>>>>>>> refs/remotes/origin/main
     pthread_create(&t1, NULL, increment_counter, NULL);
     pthread_create(&t2, NULL, increment_counter, NULL);
 
