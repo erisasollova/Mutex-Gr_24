@@ -18,4 +18,11 @@ void* increment_counter(void* arg) {
 
     pthread_create(&t1, NULL, increment_counter, NULL);
     pthread_create(&t2, NULL, increment_counter, NULL);
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    printf("Vlera përfundimtare e counter: %d\n", counter);
+    pthread_mutex_destroy(&lock);
+    return 0;
 }
